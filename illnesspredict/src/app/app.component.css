@@ -1,0 +1,126 @@
+.form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .example-container {
+    margin-bottom: 20px;
+  }
+  
+  select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .submit-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4caf50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .result-container {
+    margin-top: 20px;
+  }
+
+  .description-container {
+    max-width: 800px; /* Adjust as needed */
+  }
+  
+  .scrollable-description {
+    max-height: 200px; /* Adjust as needed */
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+
+  .result-container {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-top: 20px;
+  }
+  
+  .result-heading {
+    font-weight: bold;
+  }
+  
+  /* Styles for description container */
+  .description-container {
+    background-color: #e0e0e0;
+    padding: 10px;
+    margin-top: 20px;
+  }
+  
+  .scrollable-description {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  
+  /* Styles for precautions container */
+  .precautions-container {
+    background-color: #d0d0d0;
+    padding: 10px;
+    margin-top: 20px;
+  }
+  
+  /* Styles for doctor recommendation container */
+  .doctor-recommendation-container {
+    background-color: #c0c0c0;
+    padding: 10px;
+    margin-top: 20px;
+  }
+  
+  /* Styles for recommended medicine container */
+  .recommended-medicine-container {
+    background-color: #b0b0b0;
+    padding: 10px;
+    margin-top: 20px;
+  }
+  
+  .medicine-details {
+    margin-top: 10px;
+  }
+  
+  .medicine-details img {
+    max-width: 100px;
+    margin-bottom: 10px;
+  }
+  
+  .medicine-details button {
+    margin-top: 10px;
+  }
+
+  .clear-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px; /* Adjust as needed */
+    border: none;
+    border-radius: 5px;
+    background-color: #f44336; /* Red color */
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center; /* Center the text */
+    text-decoration: none; /* Remove underline */
+  }
+  
+  .clear-button:hover {
+    background-color: #d32f2f; /* Darker red color on hover */
+  }
+  
+  
+  
+  

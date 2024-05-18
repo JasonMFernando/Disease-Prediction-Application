@@ -1,0 +1,84 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="form-container">
+  <div class="example-container">
+    <select formControlName="symptom1">
+      <option value="" disabled selected hidden>Enter symptom</option>
+      <option *ngFor="let symptom of symptoms">{{ symptom }}</option>
+    </select>
+    <br>
+    <select formControlName="symptom2">
+      <option value="" disabled selected hidden>Enter symptom</option>
+      <option *ngFor="let symptom of symptoms">{{ symptom }}</option>
+    </select>
+    <br>
+    <select formControlName="symptom3">
+      <option value="" disabled selected hidden>Enter symptom</option>
+      <option *ngFor="let symptom of symptoms">{{ symptom }}</option>
+    </select>
+    <br>
+    <select formControlName="symptom4">
+      <option value="" disabled selected hidden>Enter symptom</option>
+      <option *ngFor="let symptom of symptoms">{{ symptom }}</option>
+    </select>
+    <br>
+    <select formControlName="symptom5">
+      <option value="" disabled selected hidden>Enter symptom</option>
+      <option *ngFor="let symptom of symptoms">{{ symptom }}</option>
+    </select>
+    <br>
+    <select formControlName="symptom6">
+      <option value="" disabled selected hidden>Enter symptom</option>
+      <option *ngFor="let symptom of symptoms">{{ symptom }}</option>
+    </select>
+  </div>
+
+  <button type="submit" class="submit-button">Submit</button>
+
+  <button type="button" class="clear-button" (click)="clearForm()">Clear</button>
+</form>
+
+
+<div *ngIf="predictedIllness" class="result-container">
+  <p class="result-heading">The disease is {{ predictedIllness }}</p>
+</div>
+
+
+<div *ngIf="description" class="description-container">
+  <p>Description for {{ predictedIllness }}:</p>
+  <div class="scrollable-description">
+    {{ description }}
+  </div>
+</div>
+
+
+<div *ngIf="precautions.length > 0" class="precautions-container">
+  <p>Precautions to take:</p>
+  <ul>
+    <li *ngFor="let precaution of precautions">{{ precaution }}</li>
+  </ul>
+</div>
+
+<!-- Doctor recommendation container -->
+<div *ngIf="doctorRecommendation" class="doctor-recommendation-container">
+  <p>{{ doctorRecommendation }}</p>
+</div>
+
+<!-- Recommended medicine container -->
+<div *ngIf="recommendedMedicine" class="recommended-medicine-container">
+  <p>Recommended Medicine to use: {{ recommendedMedicine }}</p>
+  <div class="medicine-details">
+    <img *ngIf="medicineImageUrl" [src]="medicineImageUrl" alt="Medicine Image">
+    <p>Review: {{ medicineReview | truncate }}</p>
+    <button (click)="toggleReviewVisibility()">Show Full Review</button>
+    <p *ngIf="showFullReview">{{ medicineReview }}</p>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- app.component.html -->
+<!-- <div id="map" style="height: 400px;"></div> -->
+
+
