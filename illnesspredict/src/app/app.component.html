@@ -1,84 +1,104 @@
-<form [formGroup]="form" (ngSubmit)="submit()" class="form-container">
-  <div class="example-container">
-    <select formControlName="symptom1">
-      <option value="" disabled selected hidden>Enter symptom</option>
-      <option *ngFor="let symptom of symptoms">{{ symptom }}</option>
-    </select>
-    <br>
-    <select formControlName="symptom2">
-      <option value="" disabled selected hidden>Enter symptom</option>
-      <option *ngFor="let symptom of symptoms">{{ symptom }}</option>
-    </select>
-    <br>
-    <select formControlName="symptom3">
-      <option value="" disabled selected hidden>Enter symptom</option>
-      <option *ngFor="let symptom of symptoms">{{ symptom }}</option>
-    </select>
-    <br>
-    <select formControlName="symptom4">
-      <option value="" disabled selected hidden>Enter symptom</option>
-      <option *ngFor="let symptom of symptoms">{{ symptom }}</option>
-    </select>
-    <br>
-    <select formControlName="symptom5">
-      <option value="" disabled selected hidden>Enter symptom</option>
-      <option *ngFor="let symptom of symptoms">{{ symptom }}</option>
-    </select>
-    <br>
-    <select formControlName="symptom6">
-      <option value="" disabled selected hidden>Enter symptom</option>
-      <option *ngFor="let symptom of symptoms">{{ symptom }}</option>
-    </select>
-  </div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Disease Prediction</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="app.component.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center text-success my-4">Disease Prediction</h1>
+        <div class="form-container">
+            <p>Welcome to the Disease Prediction tool. Follow these steps:</p>
+            <ol>
+                <li>Select the symptoms you are experiencing from the dropdown menus.</li>
+                <li>Click the "Submit" button to get your disease prediction.</li>
+                <li>To reset the form, click the "Clear" button.</li>
+            </ol>
 
-  <button type="submit" class="submit-button">Submit</button>
+            <form [formGroup]="form" (ngSubmit)="submit()">
+                <div class="example-container">
+                    <div class="form-group">
+                        <select class="form-control" formControlName="symptom1">
+                            <option value="" disabled selected hidden>Enter symptom</option>
+                            <option *ngFor="let symptom of symptoms">{{ symptom }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" formControlName="symptom2">
+                            <option value="" disabled selected hidden>Enter symptom</option>
+                            <option *ngFor="let symptom of symptoms">{{ symptom }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" formControlName="symptom3">
+                            <option value="" disabled selected hidden>Enter symptom</option>
+                            <option *ngFor="let symptom of symptoms">{{ symptom }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" formControlName="symptom4">
+                            <option value="" disabled selected hidden>Enter symptom</option>
+                            <option *ngFor="let symptom of symptoms">{{ symptom }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" formControlName="symptom5">
+                            <option value="" disabled selected hidden>Enter symptom</option>
+                            <option *ngFor="let symptom of symptoms">{{ symptom }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" formControlName="symptom6">
+                            <option value="" disabled selected hidden>Enter symptom</option>
+                            <option *ngFor="let symptom of symptoms">{{ symptom }}</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-success submit-button">Submit</button>
+                <button type="button" class="btn btn-danger clear-button" (click)="clearForm()">Clear</button>
+            </form>
+        </div>
 
-  <button type="button" class="clear-button" (click)="clearForm()">Clear</button>
-</form>
+        <div *ngIf="predictedIllness" class="result-container">
+            <p class="result-heading">The disease is {{ predictedIllness }}</p>
+        </div>
 
+        <div *ngIf="description" class="description-container">
+            <p>Description for {{ predictedIllness }}:</p>
+            <div class="scrollable-description">
+                {{ description }}
+            </div>
+        </div>
 
-<div *ngIf="predictedIllness" class="result-container">
-  <p class="result-heading">The disease is {{ predictedIllness }}</p>
-</div>
+        <div *ngIf="precautions.length > 0" class="precautions-container">
+            <p>Precautions to take:</p>
+            <ul>
+                <li *ngFor="let precaution of precautions">{{ precaution }}</li>
+            </ul>
+        </div>
 
+        <div *ngIf="doctorRecommendation" class="doctor-recommendation-container">
+            <p>{{ doctorRecommendation }}</p>
+        </div>
 
-<div *ngIf="description" class="description-container">
-  <p>Description for {{ predictedIllness }}:</p>
-  <div class="scrollable-description">
-    {{ description }}
-  </div>
-</div>
+        <div *ngIf="recommendedMedicine" class="recommended-medicine-container">
+            <p>Recommended Medicine to use: {{ recommendedMedicine }}</p>
+            <div class="medicine-details">
+                <img *ngIf="medicineImageUrl" [src]="medicineImageUrl" alt="Medicine Image">
+                <p>Review: {{ medicineReview | truncate }}</p>
+                <button class="btn btn-link" (click)="toggleReviewVisibility()">Show Full Review</button>
+                <p *ngIf="showFullReview">{{ medicineReview }}</p>
+            </div>
+        </div>
+    </div>
 
-
-<div *ngIf="precautions.length > 0" class="precautions-container">
-  <p>Precautions to take:</p>
-  <ul>
-    <li *ngFor="let precaution of precautions">{{ precaution }}</li>
-  </ul>
-</div>
-
-<!-- Doctor recommendation container -->
-<div *ngIf="doctorRecommendation" class="doctor-recommendation-container">
-  <p>{{ doctorRecommendation }}</p>
-</div>
-
-<!-- Recommended medicine container -->
-<div *ngIf="recommendedMedicine" class="recommended-medicine-container">
-  <p>Recommended Medicine to use: {{ recommendedMedicine }}</p>
-  <div class="medicine-details">
-    <img *ngIf="medicineImageUrl" [src]="medicineImageUrl" alt="Medicine Image">
-    <p>Review: {{ medicineReview | truncate }}</p>
-    <button (click)="toggleReviewVisibility()">Show Full Review</button>
-    <p *ngIf="showFullReview">{{ medicineReview }}</p>
-  </div>
-</div>
-
-
-
-
-
-
-<!-- app.component.html -->
-<!-- <div id="map" style="height: 400px;"></div> -->
-
-
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
